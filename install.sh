@@ -14,7 +14,7 @@ if [ "${SWAP}" = "On" ]; then
   mkfs.${FLT} /dev/${DISK_NAME}p3
   mkswap /dev/${DISK_NAME}p2
   swapon /dev/${DISK_NAME}p2
-  mkfs.fat /dev/${DISK_NAME}p1
+  mkfs.fat -F 32 /dev/${DISK_NAME}p1
   mount /dev/${DISK_NAME}p3 /mnt/gentoo
   cd /mnt/gentoo
   chronyd -q
@@ -62,7 +62,7 @@ if [ "${SWAP}" = "On" ]; then
 else
   echo -e "n\n1\n\n+${EFI_SIZE}\nt\n1\nn\n2\n\n\nw" | fdisk /dev/${DISK_NAME}
   mkfs.${FLT} /dev/${DISK_NAME}p2
-  mkfs.fat /dev/${DISK_NAME}p1
+  mkfs.fat -F 32 /dev/${DISK_NAME}p1
   mount /dev/${DISK_NAME}p2 /mnt/gentoo
   cd /mnt/gentoo
   chronyd -q
